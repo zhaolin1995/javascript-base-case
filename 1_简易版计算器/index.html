@@ -22,24 +22,69 @@
 
 </html>
 <script>
-    // 获取按钮注册事件
+    //  1 获取按钮注册事件
 
     document.getElementById('btn').onclick = function () {
-        // 获取到num1 value
+        //  2 获取到num1 value
         var num1 = document.getElementById('num1').value
-         // 获取到num2 value
+        // 3 获取到num2 value
         var num2 = document.getElementById('num2').value
-         // 获取到ysf 1value
+        // 4 获取到ysf 1value
         var ysf = document.getElementById('ysf').value
-        // 声明变量 为结果
+        // 5 声明变量 为结果
         var result = '运算：'
-        // 使用switch方法 循环
-        switch (ysf) {
-            case '+':
-                result = '运算结果是' + num1 + '+' + num2 + '=' + (num1 + num2)
-                break;// 跳出循环
 
+        // 8 最为一个标记
+        var flag = true
+        // 8.1 判断num1与num2不能为空
+        if (num1 == '') {
+            result += '输入框1为空'
+            flag = false
+        } else {
+            // 判断输入框1 是否是有效数字
+            if (isNaN(num1)) {
+                result += '输入框1不是有效数字'
+                flag = false
+            }
         }
+        if (num2 == '') {
+            result += '输入框2为空'
+            flag = false
+        } else {
+            // 判断输入框2 是否是有效数字
+            if (isNaN(num2)) {
+                result += '输入框2不是有效数字'
+                flag = false
+            }
+        }
+        // 6 将num1与num2转换为正数或浮点数
+        num1 = parseFloat(num1)
+        num2 = parseFloat(num2)
+        // 7 使用switch方法 循环
+        if (flag) {
+            switch (ysf) {
+                case '+':
+                    result = '运算结果是' + num1 + '+' + num2 + '=' + (num1 + num2)
+                    break; // 跳出循环
+                case '-':
+                    result = '运算结果是' + num1 + '-' + num2 + '=' + (num1 - num2)
+                    break; // 跳出循环
+                case '*':
+                    result = '运算结果是' + num1 + '*' + num2 + '=' + (num1 * num2)
+                    break; // 跳出循环
+                case '/':
+                    //  除数不能为0 进行判断
+                    if (num2 == 0) {
+                        result = '除数不能为0 '
+                    } else {
+                        result = '运算结果是' + num1 + '/' + num2 + '=' + (num1 / num2)
+                        break; // 跳出循环
+                    }
+
+
+            }
+        }
+
         document.getElementById('res').innerHTML = result
     }
 </script>
