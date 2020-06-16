@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>1_简易版计算器</title>
 </head>
+
 <body>
     <input type="text" size="5" id="num1" value="">
-    <select  id="ysf">
+    <select id="ysf">
         <option value="+">+</option>
         <option value="-">-</option>
         <option value="*">*</option>
@@ -15,5 +17,29 @@
     </select>
     <input type="text" size="5" id="num2" value="">
     <input type="button" value="计算" id="btn">
+    <p id="res">请输入运算的数</p>
 </body>
+
 </html>
+<script>
+    // 获取按钮注册事件
+
+    document.getElementById('btn').onclick = function () {
+        // 获取到num1 value
+        var num1 = document.getElementById('num1').value
+         // 获取到num2 value
+        var num2 = document.getElementById('num2').value
+         // 获取到ysf 1value
+        var ysf = document.getElementById('ysf').value
+        // 声明变量 为结果
+        var result = '运算：'
+        // 使用switch方法 循环
+        switch (ysf) {
+            case '+':
+                result = '运算结果是' + num1 + '+' + num2 + '=' + (num1 + num2)
+                break;// 跳出循环
+
+        }
+        document.getElementById('res').innerHTML = result
+    }
+</script>
